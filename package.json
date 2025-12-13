@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.4.2",
+    "@react-three/drei": "^9.112.0",
+    "@react-three/fiber": "^8.17.6",
     "@types/three": "^0.182.0",
     "clsx": "^2.1.1",
     "ethers": "^6.16.0",
@@ -22,7 +22,7 @@
     "react-dom": "^18",
     "solc": "^0.8.31",
     "tailwind-merge": "^3.4.0",
-    "three": "^0.182.0"
+    "three": "^0.168.0"
   },
   "devDependencies": {
     "@types/node": "^20",
