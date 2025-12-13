@@ -197,7 +197,7 @@ main().catch((error) => {
           </div>
 
           <div className="w-full lg:w-96 rounded-lg overflow-hidden border border-white/10">
-            <video src="/GIF_Generation_for_Coding_Project.mp4" autoPlay muted loop playsInline className="hero-video w-full h-72 object-cover" / aria-hidden="true">
+            <video src="/GIF_Generation_for_Coding_Project.mp4" autoPlay muted loop playsInline aria-hidden="true" className="hero-video w-full h-72 object-cover" />
           </div>
         </div>
       </section>
@@ -397,6 +397,7 @@ main().catch((error) => {
     </>
   );
 }
+
 
 
 
