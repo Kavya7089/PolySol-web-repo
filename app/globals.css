@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Nature Palette */
+  --background: #392f2f;
+  /* Dark Earth */
+  --foreground: #e6d3a7;
+  /* Sand/Cream */
+
+  --primary: #59a985;
+  /* Fresh Green */
+  --primary-foreground: #ffffff;
+
+  --secondary: #3a7563;
+  /* Forest Green */
+  --secondary-foreground: #e6d3a7;
+
+  --accent: #59a985;
+  --accent-foreground: #ffffff;
+
+  --muted: #4a3f3f;
+  --muted-foreground: #a69b9b;
+
+  --card: #423838;
+  --card-foreground: #e6d3a7;
+
+  --border: #524848;
+
+  --radius: 0.75rem;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(58, 117, 99, 0.2);
+  /* Secondary color with opacity */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(230, 211, 167, 0.1);
+  /* Foreground/Sand with opacity */
+}
+
+.glass-panel {
+  background: rgba(66, 56, 56, 0.6);
+  /* Card color with opacity */
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(230, 211, 167, 0.05);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(89, 169, 133, 0.5);
+  /* Primary Green Glow */
+}
+
+.glow-border:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(89, 169, 133, 0.3);
+}
