@@ -12,30 +12,30 @@ interface FloatingLaptopProps {
 }
 
 const FloatingLaptop: React.FC<FloatingLaptopProps> = ({ position, scale }) => {
+  /* Floating Laptop Enhanced */
   const baseRef = useRef<Mesh | null>(null);
-  const screenRef = useRef<Group | null>(null);
+  const screenGroupRef = useRef<Group | null>(null);
   const groupRef = useRef<Group | null>(null);
 
-  // Normalize scale to a tuple for threejs/react-three-fiber usage
-  const scaleVec: [number, number, number] = typeof scale === 'number' ? [scale, scale, scale] : [...scale];
-
-  // Load the image as a texture
+  // Normalize scale
+  const scaleVec: [number, number, number] = typeof scale === 'number' ? [scale, scale, scale] : [...scale] as [number, number, number];
   const screenTexture = useLoader(TextureLoader, laptopScreen);
-
+  
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     if (groupRef.current) {
-      groupRef.current.position.y = position[1] + Math.sin(t) * 0.1;
-      groupRef.current.rotation.y = Math.sin(t * 0.3) * 0.15;
-      groupRef.current.rotation.z = Math.sin(t * 0.2) * 0.05;
+      // Gentle floating
+      groupRef.current.position.y = position[1] + Math.sin(t * 0.8) * 0.15;
+      groupRef.current.rotation.y = Math.sin(t * 0.25) * 0.2;
     }
-    if (screenRef.current) {
-      screenRef.current.rotation.x = -Math.PI / 4 + Math.sin(t * 0.5) * 0.015;
+    if (screenGroupRef.current) {
+      // Screen open/close slightly breathing
+      screenGroupRef.current.rotation.x = 0.2 + Math.sin(t * 0.5) * 0.05;
     }
   });
 
   return (
-    <group ref={groupRef} position={position} scale={scaleVec}>
+    <group ref={groupRef} position={position} scale={scale}>
       {/* Shadow */}
       <mesh position={[0, -0.6, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <circleGeometry args={[1.2, 32]} />
@@ -61,11 +61,11 @@ const FloatingLaptop: React.FC<FloatingLaptopProps> = ({ position, scale }) => {
       </mesh>
 
       {/* Keys */}
-      {Array.from({ length: 4 }).flatMap((_, row) =>
+      {Array.from({ length: 4 }).map((_, row) =>
         Array.from({ length: 10 }).map((_, col) => (
           <mesh
-            key={`key-${row}-${col}`} 
-            position={[ -0.65 + col * 0.15, 0.258, -0.3 + row * 0.15 ]}
+            key={`key-${row}-${col}`}
+            position={[-0.65 + col * 0.15, 0.258, 0.5 + row * 0.15+-0.8]}
             rotation={[-Math.PI / 2, 0, 0]}
           >
             <boxGeometry args={[0.12, 0.12, 0.04]} />
@@ -75,7 +75,7 @@ const FloatingLaptop: React.FC<FloatingLaptopProps> = ({ position, scale }) => {
       )}
 
       {/* Screen Group */}
-      <group ref={screenRef} position={[0, 0.6, -0.82]} rotation={[0.2, 0, 0]}>
+      <group ref={screenGroupRef} position={[0, 0.7, -0.4]} rotation={[0.20, 0, 0]}>
         {/* Back of Screen */}
         <mesh castShadow receiveShadow>
           <boxGeometry args={[1.5, 1, 0.05]} />

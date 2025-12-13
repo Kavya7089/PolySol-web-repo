@@ -2,7 +2,7 @@ import { Terminal, Shield, Workflow, Code, Coins } from "lucide-react";
 
 export default function RulesPage() {
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-12 md:px-6">
+    <div className="container bg-white/10 rounded-xl backdrop-blur-sm mx-auto max-w-4xl px-6 py-12 md:px-6 mt-4 mb-4">
       <div className="mb-10 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-slate-100 lg:text-5xl">
           Rules & Syntax
@@ -16,7 +16,7 @@ export default function RulesPage() {
         {rules.map((rule, idx) => (
           <div
             key={idx}
-            className="group rounded-xl border border-slate-800 bg-slate-900/50 p-6 transition-all hover:bg-slate-900"
+            className="group rounded-xl border border-slate-800 bg-slate-900/90 p-6 transition-all hover:bg-slate-900 hover:border-slate-100 hover:border-2"
           >
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500/20 group-hover:text-indigo-300">
               <rule.icon className="h-5 w-5" />

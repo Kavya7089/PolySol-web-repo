@@ -3,17 +3,17 @@ import { ArrowRight, Download, FileText, Play, Rocket } from "lucide-react";
 
 export default function GuidePage() {
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-12 md:px-6">
-      <div className="mb-10 text-center">
+    <div className="container bg-white/10 rounded-xl backdrop-blur-sm mx-auto max-w-4xl px-6 py-12 md:px-6 mt-4 mb-4">
+      <div className="mb-10 text-center ">
         <h1 className="text-4xl font-extrabold tracking-tight text-slate-100">
           How to Use
         </h1>
-        <p className="mt-4 text-lg text-slate-400">
+        <p className="mt-4 text-lg text-slate-300 ">
           From installation to deployment in 4 simple steps.
         </p>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-8 ">
         <Step 
           number="1" 
           title="Install via CLI" 
@@ -76,7 +76,7 @@ class CrowdFund {
         </Step>
         
         <div className="flex justify-center pt-8">
-            <Link href="/" className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-indigo-700 hover:text-white">
+            <Link href="/" className="inline-flex items-center justify-center rounded-lg bg-green-500 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-green-900 hover:text-white">
                 Go to Playground <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
         </div>
@@ -93,8 +93,8 @@ function Step({ number, title, icon: Icon, description, children }: {
   children?: React.ReactNode;
 }) {
   return (
-    <div className="relative flex gap-6 rounded-xl border border-slate-800 bg-slate-900/40 p-6 md:p-8">
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-800 font-bold text-slate-200">
+    <div className="relative flex gap-6 rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-black/80 p-6 md:p-8">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-800  font-bold text-slate-200">
         {number}
       </div>
       <div className="flex-1 space-y-4">

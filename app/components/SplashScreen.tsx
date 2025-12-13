@@ -9,37 +9,11 @@ import { motion } from 'framer-motion';
 
 import FloatingLaptop from './3d/FloatingLaptop';
 
-function Model() {
-  return (
-     <div className="order-1 lg:order-2 h-80 lg:h-96">
-            <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-              <ambientLight intensity={0.7} />
-              <pointLight position={[10, 10, 10]} intensity={1.5} />
-              <Float 
-                speed={1.5} 
-                rotationIntensity={0.5} 
-                floatIntensity={0.5}
-              >
-                <FloatingLaptop position={[0, 0, 0]} scale={1.5} />
-              </Float>
-              <OrbitControls 
-                enableZoom={false} 
-                enablePan={false}
-                autoRotate 
-                autoRotateSpeed={0.5}
-                minPolarAngle={Math.PI / 3}
-                maxPolarAngle={Math.PI / 1.5}
-              />
-            </Canvas>
-          </div>
-  );
-}
-
 export default function SplashScreen({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       onComplete();
-    }, 3000);
+    }, 800);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
@@ -47,15 +21,28 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 8.0 }}
       className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#392f2f]"
     >
       <div className="h-[300px] w-full">
-          <Canvas>
-             <ambientLight intensity={0.5} />
-             <pointLight position={[10, 10, 10]} />
-             <Model />
-             <OrbitControls autoRotate enableZoom={false} />
+          <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+             <ambientLight intensity={0.7} />
+             <pointLight position={[10, 10, 10]} intensity={1.5} />
+             <Float 
+               speed={1.5} 
+               rotationIntensity={0.5} 
+               floatIntensity={0.5}
+             >
+               <FloatingLaptop position={[0, 0, 0]} scale={1.5} />
+             </Float>
+             <OrbitControls 
+               enableZoom={false} 
+               enablePan={false}
+               autoRotate 
+               autoRotateSpeed={0.5}
+               minPolarAngle={Math.PI / 3}
+               maxPolarAngle={Math.PI / 1.5}
+             />
           </Canvas>
       </div>
       <h1 className="mt-4 text-3xl font-bold text-[#e6d3a7] tracking-widest">POLYSOL</h1>
