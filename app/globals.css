@@ -1,12 +1,12 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   /* User Palette */
-  --color-first: #392f2f;
+  --color-first: #3a7563;
   /* Dark Brown/Grey - Background */
-  --color-second: #3a7563;
+  --color-second: #392f2f;
   /* Dark Green - Secondary/Panels */
   --color-third: #59a985;
   /* Medium Green - Primary/Accents */
@@ -41,13 +41,14 @@ body {
 .glass {
   background: rgba(57, 47, 47, 0.7);
   /* based on color-first */
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .glass-panel {
   background: rgba(58, 117, 99, 0.1);
   /* based on color-second */
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(230, 211, 167, 0.05);
 }
@@ -55,3 +56,19 @@ body {
 .glow-text {
   text-shadow: 0 0 20px rgba(89, 169, 133, 0.5);
 }
+/* Background helper */
+.bg-background {
+  background-image: url('/1765646484465.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+
+.hero-video {
+  object-fit: cover;
+  filter: saturate(0.98) brightness(0.95);
+}
+

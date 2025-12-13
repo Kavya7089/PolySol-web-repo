@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { Copy, Play, AlertTriangle, Check, Loader2, Wallet, Rocket, Code2, Zap, Terminal, ExternalLink } from "lucide-react";
@@ -170,6 +170,38 @@ main().catch((error) => {
       <AnimatePresence>
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       </AnimatePresence>
+      <section className="relative w-full h-72 bg-background">
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="relative z-10 container mx-auto px-6 py-8 flex flex-col lg:flex-row items-center gap-6">
+          <div className="flex-1 max-w-2xl text-center lg:text-left">
+            <h2 className="text-3xl lg:text-5xl font-bold tracking-tight text-white">PolySol Studio</h2>
+            <p className="mt-3 text-sm text-slate-200 max-w-xl">Transpile Java/JavaScript into secure Solidity smart contracts with a single click. Develop, lint, transpile and deploy  all in one browser-based studio.</p>
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
+              <div className="bg-black/30 rounded-lg p-3">
+                <p className="font-semibold text-sm text-white">Fast Transpilation</p>
+                <p className="text-xs text-slate-300">Convert JS/Java to Solidity reliably with linting.</p>
+              </div>
+              <div className="bg-black/30 rounded-lg p-3">
+                <p className="font-semibold text-sm text-white">Easy Deployment</p>
+                <p className="text-xs text-slate-300">Deploy to Remix or download Hardhat script.</p>
+              </div>
+              <div className="bg-black/30 rounded-lg p-3">
+                <p className="font-semibold text-sm text-white">Wallet Integration</p>
+                <p className="text-xs text-slate-300">Connect MetaMask and broadcast contracts quickly.</p>
+              </div>
+              <div className="bg-black/30 rounded-lg p-3">
+                <p className="font-semibold text-sm text-white">Static Checks</p>
+                <p className="text-xs text-slate-300">Inline linter warnings and smart suggestions.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full lg:w-96 rounded-lg overflow-hidden border border-white/10">
+            <video src="/GIF_Generation_for_Coding_Project.mp4" autoPlay muted loop playsInline className="hero-video w-full h-72 object-cover" />
+          </div>
+        </div>
+      </section>
+
       
       {!showSplash && (
         <motion.div 
@@ -179,9 +211,9 @@ main().catch((error) => {
             className="flex h-screen flex-col bg-background text-foreground transition-colors duration-500"
         >
           {/* Header */}
-          <header className="glass fixed top-0 left-0 right-0 z-40 flex h-16 items-center justify-between px-6 border-b border-border">
+          <header className="glass fixed top-15 left-0 right-0 z-40 flex h-16 items-center justify-between px-6 border-b border-border">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary shadow-lg shadow-primary/20">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary   to-secondary shadow-lg shadow-primary/20">
                  <Zap className="h-6 w-6 text-white" />
               </div>
               <div>
@@ -221,10 +253,9 @@ main().catch((error) => {
                   </div>
                   
                   <div className="flex items-center gap-2">
-                     <select
-                        value={language}
+                     <select id="language-select" aria-label="Language selector" title="Source language" value={language}
                         onChange={(e) => handleLanguageChange(e.target.value as SourceLanguage)}
-                        className="h-7 rounded bg-input px-2 text-xs text-secondary-foreground border border-border focus:border-primary focus:outline-none"
+                        className="h-7 rounded bg-input px-2 bg-#359a985 text-xs text-secondary-foreground border border-border focus:border-primary focus:outline-none"
                       >
                         <option value="javascript">JavaScript</option>
                         <option value="java">Java</option>
@@ -233,7 +264,7 @@ main().catch((error) => {
                       <button
                         onClick={handleTranspile}
                         disabled={isTranspiling}
-                        className="flex h-7 items-center gap-2 rounded bg-primary px-3 text-xs font-medium text-white shadow-lg shadow-primary/20 transition-all hover:shadow-primary/40 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex h-7 items-center gap-2 rounded bg-primary px-3 text-xs font-medium text-white shadow-lg shadow-primary/20 transition-all hover:bg-black/50 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isTranspiling ? <Loader2 className="h-3 w-3 animate-spin" /> : <Play className="h-3 w-3 fill-current" />}
                         Transpile
@@ -245,7 +276,7 @@ main().catch((error) => {
                    <textarea
                      value={inputCode}
                      onChange={(e) => setInputCode(e.target.value)}
-                     className="absolute inset-0 h-full w-full resize-none bg-transparent p-5 font-mono text-sm leading-relaxed text-foreground focus:outline-none selection:bg-primary/30 placeholder:text-muted-foreground"
+                     className="absolute inset-0 h-full w-full resize-none bg-black/20 p-5 font-mono text-sm leading-relaxed text-foreground focus:outline-none selection:bg-primary/30 placeholder:text-muted-foreground"
                      spellCheck={false}
                      placeholder="Paste your JS code here..."
                    />
@@ -328,14 +359,14 @@ main().catch((error) => {
                               </div>
                           )}
                           {deployedAddress && (
-                              <div className="absolute bottom-4 right-4 left-auto rounded-lg border border-green-500/20 bg-green-500/10 p-3 backdrop-blur-md animate-in slide-in-from-bottom-2 shadow-xl shadow-green-500/5">
+                              <div aria-live="polite" className="absolute bottom-4 right-4 left-auto rounded-lg border border-green-500/20 bg-green-500/10 p-3 backdrop-blur-md animate-in slide-in-from-bottom-2 shadow-xl shadow-green-500/5">
                                   <div className="flex items-center gap-3">
                                       <Rocket className="h-4 w-4 text-green-400" />
                                       <div>
                                           <p className="font-semibold text-green-400 text-xs mb-0.5">Deployed Successfully</p>
                                           <p className="text-green-200/80 text-[10px] font-mono tracking-wide">{deployedAddress}</p>
                                       </div>
-                                      <button onClick={() => {navigator.clipboard.writeText(deployedAddress)}} className="ml-2 hover:text-white text-green-400/50 transition-colors">
+                                      <button aria-label="Copy deployed address" title="Copy deployed address" onClick={() => {navigator.clipboard.writeText(deployedAddress)}} className="ml-2 hover:text-white text-green-400/50 transition-colors">
                                           <Copy className="h-3 w-3" />
                                       </button>
                                   </div>
@@ -366,3 +397,7 @@ main().catch((error) => {
     </>
   );
 }
+
+
+
+

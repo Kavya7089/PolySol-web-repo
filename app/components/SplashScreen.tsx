@@ -1,23 +1,37 @@
 "use client";
 
 import { useEffect } from "react";
-import { motion } from "framer-motion";
+
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Box, Torus, Sphere } from "@react-three/drei";
+import { OrbitControls, Float } from "@react-three/drei";
+import { motion } from 'framer-motion';
+
+
+import FloatingLaptop from './3d/FloatingLaptop';
 
 function Model() {
   return (
-    <group>
-        <Torus position={[-1.2, 0, 0]} args={[0.8, 0.2, 16, 100]}>
-            <meshStandardMaterial color="#59a985" wireframe />
-        </Torus>
-        <Box position={[0, 0, 0]} args={[1, 1, 1]}>
-             <meshStandardMaterial color="#e6d3a7" />
-        </Box>
-        <Sphere position={[1.2, 0, 0]} args={[0.7, 32, 32]}>
-             <meshStandardMaterial color="#3a7563" wireframe />
-        </Sphere>
-    </group>
+     <div className="order-1 lg:order-2 h-80 lg:h-96">
+            <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+              <ambientLight intensity={0.7} />
+              <pointLight position={[10, 10, 10]} intensity={1.5} />
+              <Float 
+                speed={1.5} 
+                rotationIntensity={0.5} 
+                floatIntensity={0.5}
+              >
+                <FloatingLaptop position={[0, 0, 0]} scale={1.5} />
+              </Float>
+              <OrbitControls 
+                enableZoom={false} 
+                enablePan={false}
+                autoRotate 
+                autoRotateSpeed={0.5}
+                minPolarAngle={Math.PI / 3}
+                maxPolarAngle={Math.PI / 1.5}
+              />
+            </Canvas>
+          </div>
   );
 }
 

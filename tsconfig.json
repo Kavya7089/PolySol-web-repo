@@ -1,4 +1,4 @@
-{
+﻿{
   "compilerOptions": {
     "target": "es2018",
     "lib": [
@@ -17,6 +17,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "forceConsistentCasingInFileNames": true,
     "plugins": [
       {
         "name": "next"
