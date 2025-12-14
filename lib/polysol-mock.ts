@@ -35,49 +35,31 @@ export function transpile(code: string): string {
 }
 
 export const EXAMPLE_JS = `/**
- * @contract MyToken
+ * @contract SimpleStorage
  */
-class MyToken {
-    /** @type {string} */
-    name = "PolyToken";
-    
-    /** @type {string} */
-    symbol = "PTK";
-    
+class SimpleStorage {
     /** @type {uint256} */
-    totalSupply = 1000000;
-
-    /** @type {mapping(address => uint256)} */
-    balances;
+    value;
 
     constructor() {
-        this.balances = {};
-        this.balances[msg.sender] = this.totalSupply;
+        this.value = 0;
     }
 
     /** 
-     * @param {address} to
-     * @param {uint256} amount 
+     * @param {uint256} newValue 
      */
-    transfer(to, amount) {
-        require(this.balances[msg.sender] >= amount, "Low balance");
-        this.balances[msg.sender] -= amount;
-        this.balances[to] += amount;
+    setValue(newValue) {
+        this.value = newValue;
     }
-    
-    balanceOf(account) {
-        return this.balances[account];
+
+    retrieve() {
+        return this.value;
     }
 }`;
 
 export const EXAMPLE_JAVA = `/** @contract */
 class Counter {
-  /** @type {uint256} */
-  private int count;
-
-  public Counter() {
-    this.count = 0;
-  }
+  private int count = 0;
 
   public void increment() {
     this.count = this.count + 1;

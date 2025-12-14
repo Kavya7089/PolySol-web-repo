@@ -4,6 +4,7 @@ import { Transformer, SolidityWriter, JavaParserAdapter } from 'polysol-js-core'
 export async function POST(request: Request) {
     try {
         const { code, language } = await request.json();
+        console.log(`Transpile request: language=${language}`);
 
         if (!code.trim()) {
             return NextResponse.json({ error: 'Code is required' }, { status: 400 });

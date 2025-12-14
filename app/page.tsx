@@ -4,7 +4,7 @@ import { useState } from "react";
 import dynamic from 'next/dynamic';
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { Zap, ArrowRight, Github, Code, Layers, Rocket } from "lucide-react";
+import { Zap, ArrowRight, Code, Layers, Rocket } from "lucide-react";
 
 const SplashScreen = dynamic(() => import("./components/SplashScreen"), { ssr: false });
 

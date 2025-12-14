@@ -1,4 +1,4 @@
-import { Info, Cpu, Shield, Zap, Users, Globe } from "lucide-react";
+import { Info, Cpu, Shield, Zap, Users } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -10,8 +10,8 @@ export default function AboutPage() {
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-white glow-text">
             About PolySol
           </h1>
-          <p className="text-xl text-blue-400 font-medium">
-            The World's First Java & JavaScript to Solidity Compiler Platform.
+            <p className="text-xl text-blue-400 font-medium">
+            The World&apos;s First Java & JavaScript to Solidity Compiler Platform.
           </p>
         </div>
 
@@ -26,7 +26,7 @@ export default function AboutPage() {
               <h2 className="mb-2 text-2xl font-bold text-white">Our Mission</h2>
               <p className="leading-relaxed text-slate-300">
                 There are 20 million Java and JavaScript developers, but fewer than 200k Solidity experts. 
-                PolySol breaks down the "Wall of Solidity" by allowing you to write production-grade Smart Contracts 
+                PolySol breaks down the &quot;Wall of Solidity&quot; by allowing you to write production-grade Smart Contracts 
                 in the languages you have used for years.
               </p>
             </div>
@@ -43,7 +43,7 @@ export default function AboutPage() {
                 PolySol is not a simple text replacer. It features a custom <strong>Intermediate Representation (IR)</strong> engine 
                 that parses Abstract Syntax Trees (AST) from JS and Java. 
                 <br /><br />
-                It uses a <strong>Heuristic Inference Engine</strong> to detect blockchain-specific patterns—like guessing that a variable named "owner" should be an <code>address</code>, or that a function updating a balance must use <code>payable</code> transfers.
+                It uses a <strong>Heuristic Inference Engine</strong> to detect blockchain-specific patterns—like guessing that a variable named &quot;owner&quot; should be an <code>address</code>, or that a function updating a balance must use <code>payable</code> transfers.
               </p>
             </div>
           </section>
@@ -84,7 +84,7 @@ export default function AboutPage() {
                   <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-400 flex-shrink-0" />
                   <div>
                     <strong className="text-slate-200">Production Ready Logic:</strong>
-                    <span className="text-slate-400 block">We handle constructors, modifiers, and inheritance so you don't have to.</span>
+                    <span className="text-slate-400 block">We handle constructors, modifiers, and inheritance so you don&apos;t have to.</span>
                   </div>
                 </li>
                 <li className="flex gap-3">

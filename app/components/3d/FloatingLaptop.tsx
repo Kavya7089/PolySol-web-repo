@@ -18,7 +18,7 @@ const FloatingLaptop: React.FC<FloatingLaptopProps> = ({ position, scale }) => {
   const groupRef = useRef<Group | null>(null);
 
   // Normalize scale
-  const scaleVec: [number, number, number] = typeof scale === 'number' ? [scale, scale, scale] : [...scale] as [number, number, number];
+  // scale passed directly to group
   const screenTexture = useLoader(TextureLoader, laptopScreen);
   
   useFrame((state) => {
